@@ -136,7 +136,7 @@ def show_train_hist(hist, show = False, save = False, path = 'Train_hist.png'):
 batch_size = 128
 lr = 0.0002
 train_epoch = 20
-digit_class = 1
+digit_class = 2
 
 # data_loader
 img_size = 64
@@ -265,8 +265,8 @@ for epoch in range(train_epoch):
 
     print('[%d/%d] - ptime: %.2f, loss_d: %.3f, loss_g: %.3f' % ((epoch + 1), train_epoch, per_epoch_ptime, torch.mean(torch.FloatTensor(D_losses)),
                                                               torch.mean(torch.FloatTensor(G_losses))))
-    p = 'MNIST_DCGAN_results_%s/Random_results/MNIST_DCGAN_' + str(epoch + 1) + '.png' % digit_class
-    fixed_p = 'MNIST_DCGAN_results_%s/Fixed_results/MNIST_DCGAN_' + str(epoch + 1) + '.png' % digit_class
+    p = 'MNIST_DCGAN_results_%s/Random_results/MNIST_DCGAN_' % digit_class + str(epoch + 1) + '.png' 
+    fixed_p = 'MNIST_DCGAN_results_%s/Fixed_results/MNIST_DCGAN_' % digit_class + str(epoch + 1) + '.png' 
     show_result((epoch+1), save=True, path=p, isFix=False)
     show_result((epoch+1), save=True, path=fixed_p, isFix=True)
     train_hist['D_losses'].append(torch.mean(torch.FloatTensor(D_losses)))
